@@ -157,6 +157,7 @@ footer{background:var(--blue-dark);color:rgba(255,255,255,0.5);text-align:center
 <div class="hero">
   <div class="hero-inner">
     <div>
+      <div class="hero-eyebrow">Economics with Data Analytics · <span id="typed"></span></div>
       <h1>Hoang Quang Huy</h1>
       <p class="hero-sub">Economics with Data Analytics student at International University, VNU-HCM. Specializing in quantitative modelling, database engineering, economic and financial data visualization.</p>
       <div class="hero-btns">
@@ -381,6 +382,36 @@ footer{background:var(--blue-dark);color:rgba(255,255,255,0.5);text-align:center
   window.addEventListener('scroll', () => {
     topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
   });
+</script>
+<script>
+  const roles = ['Data Analyst', 'Market Research Analyst', 'Financial Data Analyst', 'Project Manager'];
+  let roleIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+  const typedEl = document.getElementById('typed');
+
+  function type() {
+    const current = roles[roleIndex];
+    if (!deleting) {
+      typedEl.textContent = current.substring(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === current.length) {
+        deleting = true;
+        setTimeout(type, 1500);
+        return;
+      }
+    } else {
+      typedEl.textContent = current.substring(0, charIndex - 1);
+      charIndex--;
+      if (charIndex === 0) {
+        deleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+      }
+    }
+    setTimeout(type, deleting ? 50 : 80);
+  }
+
+  type();
 </script>
 </body>
 </html>
