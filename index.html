@@ -566,9 +566,22 @@ footer{background:var(--blue-dark);color:rgba(255,255,255,0.5);text-align:center
       p.x+=p.dx;p.y+=p.dy;
       if(p.x<0||p.x>canvas2.width)p.dx*=-1;
       if(p.y<0||p.y>canvas2.height)p.dy*=-1;
-  });
-  requestAnimationFrame(draw2);
-}
+    });
+    particles2.forEach((p, i) => {
+      particles2.slice(i+1).forEach(p2 => {
+        const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+        if(dist < 100){
+          ctx2.beginPath();
+          ctx2.moveTo(p.x, p.y);
+          ctx2.lineTo(p2.x, p2.y);
+          ctx2.strokeStyle = `rgba(255,255,255,${1 - dist/100})`;
+          ctx2.lineWidth = 0.5;
+          ctx2.stroke();
+        }
+      });
+    });
+    requestAnimationFrame(draw2);
+  }
 draw2();
 </script>
 <script>
