@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hoang Quang Huy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --blue:#185FA5;
+  --blue-dark:#0C447C;
+  --blue-light:#E6F1FB;
+  --blue-mid:#B5D4F4;
+  --text:#1a2233;
+  --muted:#5a6a82;
+  --light:#f5f8fc;
+  --white:#ffffff;
+  --border:#dde6f0;
+}
+body{background:var(--white);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:15px;line-height:1.7;}
+a{color:var(--blue);text-decoration:none;}
+a:hover{text-decoration:underline;}
+nav{background:var(--blue-dark);padding:0 2rem;}
+.nav-inner{max-width:900px;margin:auto;display:flex;align-items:center;justify-content:space-between;height:58px;}
+.nav-logo{font-weight:700;font-size:16px;color:#fff;letter-spacing:.04em;}
+.nav-links{display:flex;gap:1.75rem;}
+.nav-links a{font-size:13px;color:rgba(255,255,255,0.75);letter-spacing:.03em;text-decoration:none;transition:color .15s;}
+.nav-links a:hover{color:#fff;}
+.hero{background:var(--blue-dark);padding:4rem 2rem 3.5rem;}
+.hero-inner{max-width:900px;margin:auto;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;}
+.hero-eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-mid);margin-bottom:.75rem;font-weight:500;}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1rem;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,0.7);max-width:500px;margin-bottom:1.5rem;}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;}
+.btn-primary{padding:9px 20px;background:#fff;color:var(--blue-dark);font-size:13px;font-weight:600;border-radius:6px;border:none;cursor:pointer;text-decoration:none;}
+.btn-outline{padding:9px 20px;background:transparent;color:#fff;font-size:13px;font-weight:500;border-radius:6px;border:1px solid rgba(255,255,255,0.35);cursor:pointer;text-decoration:none;}
+.hero-initials{width:90px;height:90px;border-radius:50%;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:var(--blue-dark);}
+.container{max-width:900px;margin:auto;padding:0 2rem;}
+section{padding:3.5rem 0;border-bottom:1px solid var(--border);}
+.section-label{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);background:var(--blue-light);padding:4px 10px;border-radius:4px;margin-bottom:1.25rem;}
+.section-title{font-size:1.6rem;font-weight:700;color:var(--text);margin-bottom:1.75rem;}
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:2.5rem;align-items:start;}
+.about-text{font-size:14px;color:var(--muted);line-height:1.85;}
+.about-text p+p{margin-top:.8rem;}
+.stats-col{display:flex;flex-direction:column;gap:.75rem;}
+.stat-box{background:var(--blue-light);border-radius:8px;padding:1rem 1.25rem;}
+.stat-num{font-size:1.6rem;font-weight:700;color:var(--blue-dark);}
+.stat-desc{font-size:12px;color:var(--blue);margin-top:2px;}
+.timeline{display:flex;flex-direction:column;}
+.tl-item{display:grid;grid-template-columns:140px 1fr;gap:1.5rem;padding:1.4rem 0;border-top:1px solid var(--border);}
+.tl-item:last-child{border-bottom:1px solid var(--border);}
+.tl-date{font-size:12px;color:var(--muted);padding-top:3px;line-height:1.6;}
+.tl-role{font-weight:600;font-size:15px;color:var(--text);margin-bottom:2px;}
+.tl-org{font-size:13px;color:var(--blue);margin-bottom:.5rem;}
+.tl-desc{font-size:13px;color:var(--muted);line-height:1.7;list-style:none;}
+.tl-desc li{padding-left:1.1em;text-indent:-1.1em;margin-bottom:.25rem;}
+.tl-desc li::before{content:'· ';color:var(--blue);font-weight:700;}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.proj-card{border:1px solid var(--border);border-radius:10px;padding:1.4rem;border-top:3px solid var(--blue);}
+.proj-name{font-weight:700;font-size:15px;color:var(--text);margin-bottom:.4rem;}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:.9rem;}
+.proj-stack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.75rem;}
+.proj-tech{font-size:11px;padding:2px 8px;background:var(--blue-light);color:var(--blue-dark);border-radius:4px;font-weight:500;}
+.proj-links{display:flex;gap:1rem;}
+.proj-link{font-size:12px;color:var(--blue);font-weight:500;}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;}
+.skill-card{border:1px solid var(--border);border-radius:8px;padding:1rem 1.1rem;}
+.skill-cat{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.skill-tag{font-size:12px;padding:3px 9px;background:var(--light);color:var(--muted);border-radius:4px;border:1px solid var(--border);}
+.edu-card{border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.75rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start;}
+.edu-deg{font-weight:700;font-size:16px;color:var(--text);margin-bottom:3px;}
+.edu-uni{font-size:13px;color:var(--blue);margin-bottom:.5rem;}
+.edu-detail{font-size:12px;color:var(--muted);}
+.edu-gpa{font-size:2.4rem;font-weight:700;color:var(--blue-dark);text-align:right;line-height:1;}
+.edu-gpa-label{font-size:11px;color:var(--muted);text-align:right;margin-top:3px;}
+.contact-grid{display:flex;flex-wrap:wrap;gap:1rem;}
+.contact-card{flex:1;min-width:170px;border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;align-items:center;gap:.75rem;}
+.contact-icon{width:38px;height:38px;border-radius:8px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;color:var(--blue);}
+.contact-lbl{font-size:11px;color:var(--muted);margin-bottom:2px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;}
+.contact-val{font-size:13px;color:var(--text);}
+footer{background:var(--blue-dark);color:rgba(255,255,255,0.5);text-align:center;padding:1.5rem;font-size:12px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">Hoang Quang Huy</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Financial Data Analyst Intern</div>
+      <h1>Hoang Quang Huy</h1>
+      <p class="hero-sub">Economics & Data Analytics student at VNU-HCM. Specialising in quantitative modelling, database engineering, and financial data visualisation.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="mailto:quanghuyh381@gmail.com">Get in Touch</a>
+        <a class="btn-outline" href="https://github.com/quanghuyh381" target="_blank">View GitHub</a>
+      </div>
+    </div>
+    <div class="hero-initials">HH</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <section id="about">
+    <div class="section-label">About Me</div>
+    <div class="section-title">Turning data into decisions</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a third-year Economics student specialising in Data Analytics at International University, VNU-HCM. My work bridges finance and technology — building quantitative models, designing databases, and creating dashboards that surface actionable insights.</p>
+        <p>As a Teaching Assistant supporting 150+ students across macroeconomics and statistics, and Head of Finance at Enactus IU Vietnam, I've developed both technical rigour and the ability to communicate complex data clearly to stakeholders.</p>
+        <p>I'm seeking a Financial Data Analyst internship to apply my econometrics, SQL, and visualisation expertise to real-world financial challenges.</p>
+      </div>
+      <div class="stats-col">
+        <div class="stat-box"><div class="stat-num">3.6 / 4.0</div><div class="stat-desc">GPA · Good Student Certificate 2024–25</div></div>
+        <div class="stat-box"><div class="stat-num">150+</div><div class="stat-desc">Students supported per semester as TA</div></div>
+        <div class="stat-box"><div class="stat-num">13 years</div><div class="stat-desc">Of Techcombank financial data modelled</div></div>
+        <div class="stat-box"><div class="stat-num">10 nations</div><div class="stat-desc">Covered in live ASEAN macro data app</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-label">Experience</div>
+    <div class="section-title">Work & leadership</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Jan 2025 – Present</div>
+        <div>
+          <div class="tl-role">University Teaching Assistant</div>
+          <div class="tl-org">International University, VNU-HCM</div>
+          <ul class="tl-desc">
+            <li>Supported 3 courses (Macroeconomics, Statistics for Business, Intermediate Microeconomics) for 150+ students per semester</li>
+            <li>Sourced economic datasets for faculty research and developed Excel-based exercises translating quantitative concepts into hands-on materials</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Sep 2025 – Jan 2026</div>
+        <div>
+          <div class="tl-role">University Department Tutor</div>
+          <div class="tl-org">International University, VNU-HCM</div>
+          <ul class="tl-desc">
+            <li>Delivered personalised one-on-one and small-group support in Mathematical Proofs, Microeconomics, and Mathematics for Business</li>
+            <li>Improved student comprehension and problem-solving confidence through accessible explanations of complex theory</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Nov 2024 – Present</div>
+        <div>
+          <div class="tl-role">Head of Finance Department</div>
+          <div class="tl-org">Enactus IU Vietnam</div>
+          <ul class="tl-desc">
+            <li>Grew capital from 1,000,000 VNĐ to 2,000,000 VNĐ in profit via strategic fundraising and project budget planning</li>
+            <li>Maintained financial accountability across multiple student-led social impact initiatives with cross-functional teams</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-label">Projects</div>
+    <div class="section-title">Selected work</div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-stack">
+          <span class="proj-tech">Python · Flask</span>
+          <span class="proj-tech">PostgreSQL</span>
+          <span class="proj-tech">Chart.js</span>
+          <span class="proj-tech">Railway</span>
+        </div>
+        <div class="proj-name">ASEAN Macroeconomic Indicators</div>
+        <div class="proj-desc">Full-stack web app visualising macroeconomic data across 10 ASEAN nations with interactive line charts, scatter plots, and a choropleth map. Deployed on Railway with CSV/Excel export.</div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://web-production-360b6.up.railway.app" target="_blank">Live App ↗</a>
+          <a class="proj-link" href="https://github.com/quanghuyh381/asean-economic-indicators" target="_blank">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-stack">
+          <span class="proj-tech">Power BI</span>
+          <span class="proj-tech">DAX</span>
+          <span class="proj-tech">ETL</span>
+        </div>
+        <div class="proj-name">Techcombank Financial Dashboard</div>
+        <div class="proj-desc">ETL pipeline on 13 years of Techcombank data (2011–2023). DAX measures for YoY growth, ROE, ROA, NIM, CIR, and OPEX. Combo charts, scatter plots, and gauge charts surfacing profitability trends.</div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/quanghuyh381/techcombank-financial-dashboard" target="_blank">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-label">Skills</div>
+    <div class="section-title">Technical expertise</div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-cat">Languages & Tools</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span><span class="skill-tag">Stata</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Power BI</span><span class="skill-tag">Excel</span><span class="skill-tag">DAX</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Python Libraries</div>
+        <div class="skill-tags">
+          <span class="skill-tag">NumPy</span><span class="skill-tag">Pandas</span><span class="skill-tag">Matplotlib</span><span class="skill-tag">Statsmodels</span><span class="skill-tag">Flask</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Quantitative Methods</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Econometrics</span><span class="skill-tag">Time Series</span><span class="skill-tag">Regression</span><span class="skill-tag">ETL Pipelines</span><span class="skill-tag">Data Viz</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Vietnamese (Native)</span><span class="skill-tag">English (IELTS 6.5)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-label">Education</div>
+    <div class="section-title">Academic background</div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-deg">Bachelor of Economics with Data Analytics</div>
+        <div class="edu-uni">International University (VNU-HCM) · Sep 2023 – Sep 2027</div>
+        <div class="edu-detail">
+          Introductory Econometrics: 4.0 / 4.0 &nbsp;·&nbsp; Time Series Econometrics: 3.5 / 4.0<br/>
+          Good Student Certificate, Academic Year 2024–2025
+        </div>
+      </div>
+      <div>
+        <div class="edu-gpa">3.6</div>
+        <div class="edu-gpa-label">/ 4.0 GPA</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-label">Contact</div>
+    <div class="section-title">Get in touch</div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon"><i class="ti ti-mail"></i></div>
+        <div>
+          <div class="contact-lbl">Email</div>
+          <div class="contact-val"><a href="mailto:quanghuyh381@gmail.com">quanghuyh381@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon"><i class="ti ti-phone"></i></div>
+        <div>
+          <div class="contact-lbl">Phone</div>
+          <div class="contact-val">(+84) 93 8716 347</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon"><i class="ti ti-brand-github"></i></div>
+        <div>
+          <div class="contact-lbl">GitHub</div>
+          <div class="contact-val"><a href="https://github.com/quanghuyh381" target="_blank">quanghuyh381</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>© 2026 Hoang Quang Huy · Ho Chi Minh City, Vietnam</footer>
+
+</body>
+</html>
