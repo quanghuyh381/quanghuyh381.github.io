@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <style>
+.skill-tag{opacity:0;transform:scale(0.8);transition:opacity 0.3s ease,transform 0.3s ease;}
+.skill-tag.visible{opacity:1;transform:scale(1);}
 .nav-links a{position:relative;}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:#fff;transition:width 0.3s ease;}
 .nav-links a:hover::after{width:100%;}
@@ -461,6 +463,21 @@ footer{background:var(--blue-dark);color:rgba(255,255,255,0.5);text-align:center
   }, { threshold: 0.5 });
 
   document.querySelectorAll('.stat-num').forEach(el => counterObserver.observe(el));
+</script>
+<script>
+  const tagObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const tags = entry.target.querySelectorAll('.skill-tag');
+        tags.forEach((tag, i) => {
+          setTimeout(() => tag.classList.add('visible'), i * 100);
+        });
+        tagObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.skill-card').forEach(card => tagObserver.observe(card));
 </script>
 </body>
 </html>
