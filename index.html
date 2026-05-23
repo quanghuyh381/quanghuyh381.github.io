@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <style>
+.tl-item{opacity:0;transform:translateX(-30px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.tl-item.visible{opacity:1;transform:translateX(0);}
 .skill-tag{opacity:0;transform:scale(0.8);transition:opacity 0.3s ease,transform 0.3s ease;}
 .skill-tag.visible{opacity:1;transform:scale(1);}
 .nav-links a{position:relative;}
@@ -536,6 +538,21 @@ footer{background:var(--blue-dark);color:rgba(255,255,255,0.5);text-align:center
     requestAnimationFrame(draw);
   }
   draw();
+</script>
+<script>
+  const tlObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        tlObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.tl-item').forEach((item, i) => {
+    item.style.transitionDelay = `${i * 0.15}s`;
+    tlObserver.observe(item);
+  });
 </script>
 </body>
 </html>
