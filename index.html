@@ -314,5 +314,32 @@ footer{background:var(--blue-dark);color:rgba(255,255,255,0.5);text-align:center
 
 <footer>© 2026 Hoang Quang Huy · Ho Chi Minh City, Vietnam</footer>
 <script>window.onload = function(){ window.scrollTo(0, 0); }</script>
+<style>
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const faders = document.querySelectorAll('section');
+  faders.forEach(el => el.classList.add('fade-in'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  faders.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
