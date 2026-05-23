@@ -370,5 +370,13 @@ footer{background:var(--blue-dark);color:rgba(255,255,255,0.5);text-align:center
 
   faders.forEach(el => observer.observe(el));
 </script>
+<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="topBtn" style="display:none;position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;border-radius:50%;background:var(--blue-dark);color:#fff;border:none;cursor:pointer;font-size:20px;box-shadow:0 2px 8px rgba(0,0,0,0.2);z-index:999;">↑</button>
+
+<script>
+  const topBtn = document.getElementById('topBtn');
+  window.addEventListener('scroll', () => {
+    topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+</script>
 </body>
 </html>
