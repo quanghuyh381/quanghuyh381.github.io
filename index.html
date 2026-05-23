@@ -183,10 +183,10 @@ footer{background:var(--blue-dark);color:rgba(255,255,255,0.5);text-align:center
         <p>I'm currently seeking an internship position to apply my econometrics, SQL, and visualization expertise to both real-world economic and financial challenges.</p>
       </div>
       <div class="stats-col">
-        <div class="stat-box"><div class="stat-num">3 courses</div><div class="stat-desc">Taught as University Teaching Assistant</div></div>
-        <div class="stat-box"><div class="stat-num">150+</div><div class="stat-desc">Students supported per semester as TA</div></div>
-        <div class="stat-box"><div class="stat-num">2</div><div class="stat-desc">Live data projects deployed</div></div>
-        <div class="stat-box"><div class="stat-num">2X growth</div><div class="stat-desc">Capital raised as Head of Finance</div></div>
+        <div class="stat-box"><div class="stat-num" data-target="3" data-suffix=" courses">3 courses</div><div class="stat-desc">Taught as University Teaching Assistant</div></div>
+        <div class="stat-box"><div class="stat-num" data-target="150" data-suffix="+">150+</div><div class="stat-desc">Students supported per semester as TA</div></div>
+        <div class="stat-box"><div class="stat-num" data-target="2" data-suffix="">2</div><div class="stat-desc">Live data projects deployed</div></div>
+        <div class="stat-box"><div class="stat-num" data-target="2" data-suffix="X growth">2X growth</div><div class="stat-desc">Capital raised as Head of Finance</div></div>
       </div>
     </div>
   </section>
@@ -412,6 +412,35 @@ footer{background:var(--blue-dark);color:rgba(255,255,255,0.5);text-align:center
   }
 
   type();
+</script>
+<script>
+  function animateCounter(el, target, suffix) {
+    let count = 0;
+    const duration = 1500;
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+      count += step;
+      if (count >= target) {
+        count = target;
+        clearInterval(timer);
+      }
+      el.textContent = Math.floor(count) + suffix;
+    }, 16);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        animateCounter(el, target, suffix);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.stat-num').forEach(el => counterObserver.observe(el));
 </script>
 </body>
 </html>
