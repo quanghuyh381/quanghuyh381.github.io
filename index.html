@@ -2,10 +2,28 @@
 <html lang="en">
 <head>
 <script>
-  if (history.scrollRestoration) {
-    history.scrollRestoration = 'manual';
-  }
-  window.scrollTo(0, 0);
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 80;
+      if (window.scrollY >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.style.color = 'rgba(255,255,255,0.75)';
+      if (link.getAttribute('href') === '#' + current) {
+        link.style.color = '#ffffff';
+        link.style.fontWeight = '600';
+      } else {
+        link.style.fontWeight = '400';
+      }
+    });
+  });
 </script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
