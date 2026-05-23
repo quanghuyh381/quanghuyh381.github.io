@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <style>
+.contact-card{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.contact-card.visible{opacity:1;transform:translateY(0);}
 .tl-item{opacity:0;transform:translateX(-30px);transition:opacity 0.5s ease,transform 0.5s ease;}
 .tl-item.visible{opacity:1;transform:translateX(0);}
 .skill-tag{opacity:0;transform:scale(0.8);transition:opacity 0.3s ease,transform 0.3s ease;}
@@ -572,6 +574,21 @@ footer{background:var(--blue-dark);color:rgba(255,255,255,0.5);text-align:center
     const progress = (scrollTop / docHeight) * 100;
     progressBar.style.width = progress + '%';
   });
+</script>
+<script>
+  const contactObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const cards = entry.target.querySelectorAll('.contact-card');
+        cards.forEach((card, i) => {
+          setTimeout(() => card.classList.add('visible'), i * 150);
+        });
+        contactObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('#contact').forEach(el => contactObserver.observe(el));
 </script>
 </body>
 </html>
