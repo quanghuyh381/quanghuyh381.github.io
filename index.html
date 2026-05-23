@@ -97,7 +97,7 @@ nav{background:var(--blue-dark);padding:0 2rem;}
 .nav-links{display:flex;gap:1.75rem;}
 .nav-links a{font-size:13px;color:rgba(255,255,255,0.75);letter-spacing:.03em;text-decoration:none;transition:color .15s;}
 .nav-links a:hover{color:#fff;}
-.hero{background:var(--blue-dark);padding:4rem 2rem 3.5rem;}
+.hero{background:var(--blue-dark);padding:4rem 2rem 3.5rem;background-attachment:fixed;background-size:cover;will-change:transform;}
 .hero-inner{max-width:900px;margin:auto;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;}
 .hero-eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-mid);margin-bottom:.75rem;font-weight:500;}
 .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1rem;}
@@ -554,6 +554,13 @@ footer{background:var(--blue-dark);color:rgba(255,255,255,0.5);text-align:center
   document.querySelectorAll('.tl-item').forEach((item, i) => {
     item.style.transitionDelay = `${i * 0.15}s`;
     tlObserver.observe(item);
+  });
+</script>
+<script>
+  const hero = document.querySelector('.hero');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
   });
 </script>
 </body>
