@@ -89,16 +89,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
 <style>
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
-.hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;display:block;}
-.mobile-menu{display:none;flex-direction:column;background:var(--blue-dark);padding:1rem 2rem;gap:.75rem;border-top:1px solid rgba(255,255,255,0.1);}
-.mobile-menu a{color:rgba(255,255,255,0.75);font-size:14px;text-decoration:none;padding:.25rem 0;}
-.mobile-menu a:hover{color:#fff;}
-
-@media(max-width:768px){
-  .nav-links{display:none;}
-  .hamburger{display:flex;}
-}
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --blue:#185FA5;
@@ -197,26 +187,6 @@ footer{background:var(--blue-dark);color:rgba(255,255,255,0.5);text-align:center
   <div class="loader-spinner"></div>
 </div>
 <nav>
-<div class="nav-inner">
-  <span class="nav-logo">HQH</span>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <button class="hamburger" onclick="toggleMenu()" id="hamburger">
-    <span></span><span></span><span></span>
-  </button>
-</div>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="toggleMenu()">About</a>
-  <a href="#experience" onclick="toggleMenu()">Experience</a>
-  <a href="#projects" onclick="toggleMenu()">Projects</a>
-  <a href="#skills" onclick="toggleMenu()">Skills</a>
-  <a href="#contact" onclick="toggleMenu()">Contact</a>
-</div>
   <div class="nav-inner">
     <div class="nav-links">
       <a href="#about">About</a>
@@ -687,12 +657,6 @@ draw2();
   }, { threshold: 0.3 });
 
   document.querySelectorAll('#contact').forEach(el => contactObserver.observe(el));
-</script>
-<script>
-  function toggleMenu(){
-    const menu = document.getElementById('mobileMenu');
-    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-  }
 </script>
 </body>
 </html>
